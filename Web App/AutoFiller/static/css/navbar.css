@@ -1,0 +1,49 @@
+/* ==============================================
+   2. Navbar 
+===============================================*/
+
+.custom-navbar {
+	background-color: #ffffff !important;
+	/* box-shadow: 0 2px 4px 0 rgba(0,0,0,.09); */
+	height: 70px;
+	max-height: 70px;
+}
+
+.navbar-toggler {
+	font-size: 38px;
+	background-color: transparent;
+}
+
+.navbar-toggler:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+.navbar-toggler-icon {
+	color: #ffffff;
+}
+
+.navbar-collapse {
+	background-color: #ffffff;
+}
+
+.nav-custom-link {
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: .05em;
+	margin-top: 5px;
+}
+
+.navbar a {
+	color: #53627C !important;
+	font-size: 1.0rem;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.nav-right {
+	float: right;
+}
+
+.navbar a:hover{
+	color: #0095F7 !important; 
+}

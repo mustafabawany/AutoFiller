@@ -1,0 +1,5 @@
+outs:
+- md5: babb9b203ce10d7366df057b36332b84.dir
+  size: 3528298729
+  nfiles: 15335
+  path: ResumeDataSet

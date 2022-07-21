@@ -1,0 +1,48 @@
+{% extends 'navbar.html' %}
+
+{% block head %}
+
+<link href="static/css/autocomplete.css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block body %}
+
+<section id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="leftbar col-md-5 content-box hero-content">
+            <img src="../static/images/leftbar.svg" class="img-fluid" alt="classification">
+        </div>
+        <div class="mainform col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h1 class="FormHeading">Resume Form</h1>
+            <div class="uploadbutton mb-3">
+                <label for="img" class="btn btn-primary">Upload Resume</label>
+                <input type="file" id="img" style="display:none">
+              </div>              
+            <div class="mb-3 row">
+                <label for="staticName" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="staticName">
+                </div>
+              </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="staticEmail" placeholder="info@example.com">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="contactNo" class="col-sm-2 col-form-label">Contact No.</label>
+                <div class="col-sm-10">
+                  <input type="tel" class="form-control" id="contactNo">
+                </div>
+              </div>
+              <button class="btn btn-primary" type="button">Submit</button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
