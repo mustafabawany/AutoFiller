@@ -3,31 +3,13 @@
 	background-color: white;
 }
 
-#hero h1 {
-	margin-top: 5px;
-	font-size: 35px;
-	margin-left: -2px;
-	font-weight: 300;
-}
-
-#hero p {
-	font-size: 24px;
-    font-weight: 300;
-    color: #8da2b5;
-    margin-bottom: 0px;
-    padding: 0px;
-}
-
 .leftbar img{
-    /* margin-top: 40%; */
 	width: 500px;
-	/* margin-left: 5%; */
     padding-right: 15%;
 	height: 350px;
 } 
 
 .mainform{
-    /* margin-left: 10%; */
     background: rgba( 255, 255, 255, 0.35 );
     box-shadow: 0 2px 5px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -36,18 +18,23 @@
     border: 1px solid white;
 }
 
-.uploadbutton{
-    padding-left: 70%;
-}
-
-.uploadbutton label{
-    color: white;
-}
-
 .FormHeading{
     text-align: center;
     margin-bottom: 1rem;
 }
+
+.uploadresume{
+    /* background-color: red; */
+    text-align: center;
+    padding: 30%;
+    margin: 10px;
+    background-color: #f6f8f9;
+}
+
+/* .uploadresume label{
+    cursor: pointer;
+} */
+
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
 	.hero-content {
