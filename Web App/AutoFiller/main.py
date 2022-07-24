@@ -1,14 +1,15 @@
-from fastapi import FastAPI, Request, File , UploadFile
+from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.templating import Jinja2Templates 
 from fastapi.staticfiles import StaticFiles
 from pdf2image import convert_from_path
-# import requests
-# from bs4 import BeautifulSoup
 import pyrebase
-import os
 import cv2
-# import PyPDF2
-import matplotlib.pyplot as plt
+
+import sys 
+sys.path.insert(0, 'backend/')
+from PreProcessing import *
+from TextExtraction import *
+
 
 app = FastAPI()
 
@@ -32,8 +33,8 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 storage = firebase.storage()
 
-templates = Jinja2Templates(directory= 'templates')
-app.mount('/static', StaticFiles(directory= 'static'), name = 'static')
+templates = Jinja2Templates(directory= 'frontend/templates')
+app.mount('/static', StaticFiles(directory= 'frontend/static'), name = 'static')
 
 @app.get("/")
 def getHome(request : Request):
@@ -49,12 +50,51 @@ def getAutocomplete(request : Request):
 
 @app.get("/auto-complete/{resume_id}")
 async def ProcessResume(resume_id: str , request : Request):
-    # We can get resume from here and then process it
-    resume = storage.child("Resume/" + resume_id + ".pdf").download('resume.pdf')
-    # path = os.getcwd()
-    images = convert_from_path('resume.pdf')    
-    images[0].save('page0.jpeg' , 'JPEG')
-    return {"Success" : "Yayy"}
+    
+    # Extracting PDF from Firebase Storage
+    resume = storage.child("Resume/" + resume_id + ".pdf").download('backend/Resume/resume.pdf')
+    images = convert_from_path('backend/Resume/resume.pdf')    
+    images[0].save('backend/Resume/page0.jpeg' , 'JPEG')
+    
+    preprocessing = PreProcessing()
+    text_extraction = TextExtraction()
+
+    img = cv2.imread('backend/Resume/page0.jpeg')
+    img = preprocessing.ZoomImage(img , 3)
+    img = preprocessing.GrayScaleImage(img)
+    img = preprocessing.CropImage(img)
+    img = preprocessing.InvertImage(img)
+    
+    preprocessing.SaveImage(img, "preprocessed")
+    img = preprocessing.ReadImage("preprocessed")
+    
+    boundedImg = preprocessing.CreateBoundingBox(img)
+
+    preprocessing.SaveImage(boundedImg, "bounded")
+    img = preprocessing.ReadImage("preprocessed")
+
+    text = text_extraction.ExtractText(img)
+    personName = text_extraction.extract_name(text)
+    personName = personName.replace("\n" , "")
+    contactNum = text_extraction.extract_phone_number(text.lower())
+    emailID = text_extraction.extract_emails(text.lower())
+    emailID = text_extraction.process_emails(emailID)
+
+    if emailID == list:
+        return templates.TemplateResponse('parsedResume.html' , {
+            'request' : request,
+            'name' : personName,
+            'email' : emailID[0],
+            'contact': contactNum
+        })
+    else:
+        return templates.TemplateResponse('parsedResume.html' , {
+            'request' : request,
+            'name' : personName,
+            'email' : emailID,
+            'contact': contactNum
+        })
+
     
 
 @app.post("/auto-complete")    
@@ -68,5 +108,3 @@ def successPage(request : Request):
 @app.post("/success")
 def getInfo(name: str , email : str , contact : str):
     return {"Success" : "Yayyy!!"}
-
-

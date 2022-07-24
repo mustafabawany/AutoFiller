@@ -9,6 +9,13 @@
 	height: 350px;
 } 
 
+p {
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: .05em;
+	color: #53627C;
+}
+
 .mainform{
     background: rgba( 255, 255, 255, 0.35 );
     box-shadow: 0 2px 5px 0 rgba( 31, 38, 135, 0.37 );

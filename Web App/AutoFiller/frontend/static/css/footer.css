@@ -1,0 +1,17 @@
+
+/* FOOTER SECTION  */
+
+.footer-icon{
+    margin: 0.5rem;
+}
+
+#footer{
+    text-align: center;
+    padding-top: 10%;
+}
+
+#footer p{
+    padding-top: 1rem;
+    font-family:'Montserrat-Black', sans-serif ;
+    font-weight: lighter;
+}

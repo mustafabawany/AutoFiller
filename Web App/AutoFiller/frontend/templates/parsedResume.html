@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-
+{{super()}}
 <section id="hero">
     <div class="container">
     <h1>Parsed Resume</h1>
@@ -16,19 +16,19 @@
             <div class="mb-3 row">
                 <label for="staticName" class="col-sm-2 col-form-label">Name: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="staticName" value="Mustafa Bawany">
+                    <input type="text" class="form-control" id="staticName" value={{name}}>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="staticEmail" value="mustafabawany204@gmail.com">
+                    <input type="email" class="form-control" id="staticEmail" value={{email}}>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="contactNo" class="col-sm-2 col-form-label">Contact No.:</label>
                 <div class="col-sm-10">
-                  <input type="tel" class="form-control" id="contactNo" value = "+92 333 1324486">
+                  <input type="tel" class="form-control" id="contactNo" value = {{contact}}>
                 </div>
             </div>
             <button 
@@ -43,5 +43,5 @@
   
     </div>
   </section>
-
+  
 {% endblock %}
