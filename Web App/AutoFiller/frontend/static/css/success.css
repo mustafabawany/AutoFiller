@@ -1,0 +1,18 @@
+
+section {
+	padding: 100px 0px;
+}
+
+#success h1{
+    margin-top: 5px;
+	font-size: 35px;
+	margin-left: -2px;
+	font-weight: 300;
+}
+
+.boundry{
+    border-radius: 20px;
+    margin: 0 50px;
+    padding: 80px;
+    background-color: #f6f8f9;
+}

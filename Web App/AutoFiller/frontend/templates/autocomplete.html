@@ -7,6 +7,13 @@
 {% endblock %}
 
 {% block body %}
+<div id="preloader" class="loader-wrapper">
+  <span class="loader">
+      <span class="loader-inner">
+
+      </span>
+  </span>
+</div>
 {{super()}}
 
 <section id="hero">
@@ -43,5 +50,7 @@
       </div>
     </div>
   </section>
-
+ 
 {% endblock %}
+
+{% block footer %} {% endblock %}

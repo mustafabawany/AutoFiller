@@ -74,7 +74,7 @@ async def ProcessResume(resume_id: str , request : Request):
     img = preprocessing.ReadImage("preprocessed")
 
     text = text_extraction.ExtractText(img)
-    personName = text_extraction.extract_name(text)
+    personName = text_extraction.extract_name(text.title())
     personName = personName.replace("\n" , "")
     contactNum = text_extraction.extract_phone_number(text.lower())
     emailID = text_extraction.extract_emails(text.lower())
@@ -91,20 +91,10 @@ async def ProcessResume(resume_id: str , request : Request):
         return templates.TemplateResponse('parsedResume.html' , {
             'request' : request,
             'name' : personName,
-            'email' : emailID,
+            'email' : emailID[0],
             'contact': contactNum
         })
 
-    
-
-@app.post("/auto-complete")    
-async def getPDF(resume : UploadFile = File(...)):
-    return {"resume" : resume}
-
 @app.get("/success")
-def successPage(request : Request):
-    return {"Success" : "Yayyy!"}
-
-@app.post("/success")
-def getInfo(name: str , email : str , contact : str):
-    return {"Success" : "Yayyy!!"}
+def setSuccess(request : Request):
+    return templates.TemplateResponse("success.html" , {"request":request})
