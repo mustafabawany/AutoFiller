@@ -74,7 +74,7 @@ async def ProcessResume(resume_id: str , request : Request):
     emailID = text_extraction.extract_emails(text.lower())
     emailID = text_extraction.process_emails(emailID)
     
-    if emailID == list:
+    if type(emailID) == list:
         return templates.TemplateResponse('parsedResume.html' , {
             'request' : request,
             'name' : personName,
