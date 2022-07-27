@@ -1,11 +1,12 @@
-from python:3.9-slim
+FROM python:3.9-slim
 
-COPY ./src /app/src
-COPY ./requirements.txt /app
+# Copy all the files of current directory to app directory
+COPY . /app
 
+# Whenever docker will run, it will be by default in app directory
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt 
 
 EXPOSE 8000
 
