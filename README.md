@@ -2,21 +2,21 @@
 
 ## Problem Statement
 
-A utility to fill out form automatically by automatically pulling name, email id and contact number out of your resume.
-These results are then used to auto-complete the job application forms.
+Many job portals still don’t have any AI auto-form completion; even if they do, they fail on
+resumes made with templates. This causes job applicants to fill out and correct the forms,
+creating a time-consuming activity.
 
 ## Description
 
-Product title classication is merely an instance of text classication problems, which are well-studied
-in literature. However, product titles possess some properties very different from general
-documents. A title is usually a very short description, and an incomplete sentence. A product title
-classier may need to be designed differently from a text classier. 
-<br>
-We will do exploratory data analysis on the dataset to remove noisy data, then we will perform
-feature selection and extraction to identify suitable algorithms for multi-class classification. The
-observations and results will be put into production to make it available for the end-users.
+This project is dedicated to creating an OCR software that recognizes text and patterns on
+resumes and CVs to auto-complete application forms. It is found that many job applicants
+bounce off job portals with manual forms, so to address this problem we will parse out their
+resumes.
 
-<br>
+## Proposed Solution 
+
+Create an OCR-based AI model, trained on multiple templates from the internet which can
+parse resumes and can fill out the information like Name, Email Address and Phone Number.
 
 ## Finished Product
 
@@ -24,7 +24,7 @@ observations and results will be put into production to make it available for th
 
 ## How to execute
 NOTE: You must have pip and python pre-installed in your system
-<br>
+
 1. Clone this project on your local repository
 ```
 git clone <repository link>
@@ -45,7 +45,6 @@ cd Autofiller
 ```
 uvicorn main:app --reload
 ```
-
 ## Technology Used
 
 <div>
@@ -66,3 +65,13 @@ uvicorn main:app --reload
   <img name = "BitBucket" src = "https://img.shields.io/badge/bitbucket-%230047B3.svg?style=for-the-badge&logo=bitbucket&logoColor=white">
   <img name = "Firebase" src = "https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
 </div>
+
+## Future Roadmap
+<ul>
+  <li>Expand to parse more fields like Education, Experience and Skills</li>
+  <li>Adding an additional feature of evaluating resumes based on grammar and design, and
+providing recommendations to improve.</li>
+</ul>
+
+## Dataset Source 
+<a href = "https://www.kaggle.com/datasets/aishikai/resume-dataset"><img src = "https://img.shields.io/badge/Kaggle-035a7d?style=for-the-badge&logo=kaggle&logoColor=white"></a>
