@@ -11,7 +11,7 @@ from PreProcessing import *
 from TextExtraction import *
 
 #Assigning Firebase Credentials
-cred = credentials.Certificate("./key.json")
+cred = credentials.Certificate("./config.json")
 initialize_app(cred , {'storageBucket' : 'autofiller-6f0cc.appspot.com'}) 
 
 app = FastAPI()
