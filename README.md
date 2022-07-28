@@ -75,3 +75,9 @@ providing recommendations to improve.</li>
 
 ## Dataset Source 
 <a href = "https://www.kaggle.com/datasets/aishikai/resume-dataset"><img src = "https://img.shields.io/badge/Kaggle-035a7d?style=for-the-badge&logo=kaggle&logoColor=white"></a>
+
+## Contact
+<div> 
+  <a href="mustafabawany204@gmail.com"><img name = "Gmail" src = "https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
+  <a href="https://pk.linkedin.com/in/mustafabawany"><img name = "LinkedIn" src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+</div>
