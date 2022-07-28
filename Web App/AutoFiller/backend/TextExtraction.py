@@ -1,3 +1,5 @@
+""" Importing Packages """
+
 import itertools
 import re
 import pytesseract
@@ -7,16 +9,22 @@ from spacy.matcher import Matcher
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 
+""" Class Implementation """
+
 class TextExtraction:
+    
+    """ Setting Regular Expression for Email And Contact Number """
     def __init__(self):
         self.PHONE_REG = re.compile(r'[\+\(]?[1-9][0-9 .\-\(\)]{8,}[0-9]')
         self.EMAIL_REG = re.compile(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+')
 
+    """ Extract Text From Image Using Pytesseract OCR """
     def ExtractText(self , img) : 
         custom_config = r'--oem 3 --psm 6'
         text = pytesseract.image_to_string(img, config=custom_config)
         return text
 
+    """ Remove Extra Sentences From Top Of The Image For Better Results """
     def removing_extra(self, text):
         new_sentence = ""
         result = ""
@@ -39,11 +47,14 @@ class TextExtraction:
         else:
             return text
     
+    """ Extracting Name From Text """
     def extract_name(self , text):
         
         nlp = spacy.load('en_core_web_sm')
 
         matcher = Matcher(nlp.vocab)
+
+        # Words that are to be avoided while extracting name
         ignore_words = ["curriculum" , "vitae" , "vita" , "post" , "applied" , "for" , "address" , "resume" , "engineering" , "engineer",
                     "mechanical" , "address" , "mobile" , "contact" , "phone" , "temporary" , "street" , "resume", "computer" ,
                     "software" , "personal" , "information" , "name" , "date" , "box" , "work" , "professional", "near" ,
@@ -70,6 +81,8 @@ class TextExtraction:
                 if word in ignore_words:
                     found = 1
                     break
+
+            # If found name has unusual Characters or punctuations discard.
             if not(found):
                 token_words = word_tokenize(span.text)
                 flag = 0
@@ -80,7 +93,8 @@ class TextExtraction:
                 if flag == 0:
                     return span.text
         return ""
-
+    
+    """ Extracting Contact Number From Text """
     def extract_phone_number(self , resume_text):
         phone = re.findall(self.PHONE_REG, resume_text)
         if phone:
@@ -89,10 +103,13 @@ class TextExtraction:
                 return number
         return None
     
+    """ Extracting Email ID From Text """
     def extract_emails(self, resume_text):
         return re.findall(self.EMAIL_REG, resume_text)
 
+    """ Correcting Spelling Mistakes of Gmail """
     def process_emails(self , emailID):
+
         # Identifying the string slicing for gmail
         if type(emailID) == list:
             emailNum = 0

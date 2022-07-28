@@ -1,38 +1,47 @@
+""" Importing Packages """
+
 import cv2
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.templating import Jinja2Templates 
 from fastapi.staticfiles import StaticFiles
 from pdf2image import convert_from_path
+
+""" Firebase Package """
 import firebase_admin
 from firebase_admin import credentials , storage , initialize_app
+
+""" Importing Class Implementation """
 import sys 
 sys.path.insert(0, 'backend/')
 from PreProcessing import *
 from TextExtraction import *
 
-#Assigning Firebase Credentials
+""" Assigning Firebase Credentials """
 cred = credentials.Certificate("./config.json")
 initialize_app(cred , {'storageBucket' : 'autofiller-6f0cc.appspot.com'}) 
 
 app = FastAPI()
 
-#Fetching Firebase Storage Bucket
+""" Fetching Firebase Storage Bucket """
 bucket = storage.bucket()
 
-#Assigning frontend/templates directory as Jinja Templates
+""" Assigning frontend/templates directory as Jinja Templates """
 templates = Jinja2Templates(directory= 'frontend/templates')
 
-#Assigning static directory as static to execute CSS 
+""" Assigning static directory as static to execute CSS """ 
 app.mount('/static', StaticFiles(directory= 'frontend/static'), name = 'static')
 
+""" H O M E  R O U T E """
 @app.get("/")
 def getHome(request : Request):
     return templates.TemplateResponse("homepage.html" , {"request" : request})
 
+""" A B O U T  U S  R O U T E """
 @app.get("/about-us")
 def getAboutUs(request : Request):
     return templates.TemplateResponse("about.html" , {"request":request})
 
+""" A U T O  C O M P L E T E  F O R M  R O U T E """
 @app.get("/auto-complete")
 def getAutocomplete(request : Request):
     return templates.TemplateResponse("autocomplete.html" , {"request":request})
@@ -45,7 +54,7 @@ async def ProcessResume(resume_id: str , request : Request):
     images = convert_from_path('backend/Resume/resume.pdf')    
     images[0].save('backend/Resume/page0.jpeg' , 'JPEG')
     
-    
+    # Creating Instances
     preprocessing = PreProcessing()
     text_extraction = TextExtraction()
 
@@ -56,14 +65,9 @@ async def ProcessResume(resume_id: str , request : Request):
     img = preprocessing.CropImage(img)
     img = preprocessing.InvertImage(img)
     
+    # Save & Read Image From Directory
     preprocessing.SaveImage(img, "preprocessed")
     img = preprocessing.ReadImage("preprocessed")
-    
-    # boundedImg = preprocessing.CreateBoundingBox(img)
-
-    # preprocessing.SaveImage(boundedImg, "bounded")
-    
-    # img = preprocessing.ReadImage("preprocessed")
 
     # Text Extraction And Processing Phase
     text = text_extraction.ExtractText(img)
@@ -88,6 +92,7 @@ async def ProcessResume(resume_id: str , request : Request):
             'contact': contactNum
         })
 
+""" S U C C E S S  P A G E  R O U T E """
 @app.get("/success")
 def setSuccess(request : Request):
     return templates.TemplateResponse("success.html" , {"request":request})

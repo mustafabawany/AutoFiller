@@ -1,13 +1,6 @@
-#hero {
-	margin-top: 10%;
-	background-color: white;
-}
-
-.leftbar img{
-	width: 500px;
-    padding-right: 15%;
-	height: 350px;
-} 
+/* ==============================================
+   G E N E R A L  S T Y L I N G
+===============================================*/
 
 p {
 	font-size: 14px;
@@ -15,6 +8,25 @@ p {
 	letter-spacing: .05em;
 	color: #53627C;
 }
+
+/* ==============================================
+   H E R O  S T Y L I N G
+===============================================*/
+
+#hero {
+	margin-top: 10%;
+	background-color: white;
+}
+
+/* ==============================================
+   A D D I T I O N A L  S T Y L I N G
+===============================================*/
+
+.leftbar img{
+	width: 500px;
+    padding-right: 15%;
+	height: 350px;
+} 
 
 .mainform{
     background: rgba( 255, 255, 255, 0.35 );
@@ -38,11 +50,10 @@ p {
     background-color: #f6f8f9;
 }
 
-/* .uploadresume label{
-    cursor: pointer;
-} */
+/* ==============================================
+   R E S P O N S I V E N E S S
+===============================================*/
 
-/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
 	.hero-content {
 		margin-top: 100px;

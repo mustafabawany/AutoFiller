@@ -1,3 +1,7 @@
+/* ==============================================
+   G E N E R A L  S T Y L I N G
+===============================================*/
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	color: #3a3f52;
@@ -40,6 +44,10 @@ section {
 	padding: 100px 0px;
 }
 
+/* ==============================================
+   T I T L E  S T Y L I N G
+===============================================*/
+
 .title-block {
 	max-width: 700px;
 	margin-left: auto;
@@ -68,7 +76,7 @@ section {
 }
 
 /* ==============================================
-   3. Buttons
+   B U T T O N S  S T Y L I N G
 ===============================================*/
 
 .btn {
@@ -96,9 +104,8 @@ section {
 	color: #ffffff;
 }
 
-
 /* ==============================================
-   4. Hero
+   H E R O  S T Y L I N G
 ===============================================*/
 
 #hero {
@@ -128,13 +135,20 @@ section {
     letter-spacing: .05em;
 }
 
+/* ==============================================
+   A D D I T I O N A L  S T Y L I N G
+===============================================*/
+
 .homepage img{
 	width: 700px;
 	margin-left: 5%;
 	height: 500px;
 } 
 
-/* Extra large devices (large desktops, 1200px and up) */
+/* ==============================================
+   R E S P O N S I V E N E S S
+===============================================*/
+
 @media (min-width: 1200px) { 
 	.hero-content {
 		margin-top: 100px;
