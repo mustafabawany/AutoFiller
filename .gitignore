@@ -32,6 +32,10 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+# API KEYS
+
+config.json
+/frontend/static/config.js
 
 # Installer logs
 pip-log.txt

@@ -41,7 +41,6 @@ def getAutocomplete(request : Request):
 async def ProcessResume(resume_id: str , request : Request):
     
     # Extracting PDF from Firebase Storage
-    
     resume = bucket.get_blob("Resume/" + resume_id + ".pdf").download_to_filename('backend/Resume/resume.pdf')
     images = convert_from_path('backend/Resume/resume.pdf')    
     images[0].save('backend/Resume/page0.jpeg' , 'JPEG')
