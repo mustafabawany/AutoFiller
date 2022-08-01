@@ -13,15 +13,14 @@ input.addEventListener("change" , function (){
 	}
 });
 
-this.document.getElementById("preloader").style.display = "none"
-
 window.addEventListener("load" , function(event){
 	this.document.getElementById("preloader").style.display = "none"
 })
 
 document.getElementById('submitButton').addEventListener("click" , (e) => {
 	this.document.getElementById("preloader").style.display = "flex"
-	this.document.getElementById("navbar").style.display = "none"
+	this.document.getElementById("navbar").style.display = "none"	
+	this.document.getElementById("hero").style.display = "none"
 	let file = document.getElementById('resume').files[0]
 	console.log(file)
 	const storageRef = firebase.storage().ref("Resume/" + file.name)
