@@ -20,7 +20,7 @@ parse resumes and can fill out the information like Name, Email Address and Phon
 
 ## Finished Product
 
-![Finished Website](https://github.com/mustafabawany/AutoFiller/blob/main/AutoFiller_ProjectDemo.gif) 
+![Finished Website](https://github.com/mustafabawany/AutoFiller/blob/main/Misc/AutoFiller_ProjectDemo.gif) 
 
 ## How to execute
 NOTE: You must have pip and python pre-installed in your system
